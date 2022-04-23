@@ -4,6 +4,7 @@ import {
 	foreground,
 	Logo,
 	primary_font,
+	primary_red,
 	primary_white,
 	secondary_font,
 } from "../Common/Common";
@@ -54,6 +55,7 @@ const Content = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	padding-top: 51px;
 	height: 100%;
 	width: 100%;
 `;
@@ -65,13 +67,14 @@ const QueueContainer = styled.div`
 	align-items: center;
 	background-color: ${foreground};
 	padding: 0em 1em 1em 1em;
+	scroll-behavior: smooth;
 
 	font-family: ${secondary_font};
 	color: ${primary_white};
 	font-size: x-large;
 
 	width: auto;
-	max-height: calc(100vh - 15vh);
+	max-height: calc(100vh - 5vh);
 
 	overflow-y: scroll;
 	list-style: none;
@@ -81,8 +84,8 @@ const QueueItem = styled.div`
 
 	color: ${primary_white};
 	font-family: ${secondary_font};
-	width: 10em;
-	height: 3em;
+	width: 12em;
+	height: 2em;
 
 	object-fit: cover;
 	aspect-ratio: 1/1;
@@ -104,7 +107,9 @@ const QueueItem = styled.div`
 
 // Video Player, Container
 const PlayerContainer = styled.div`
-	width: calc(100% - 32em);
+	position: relative;
+	max-width: calc(100% - 32em);
+
 	display: flex;
 	flex-direction: column;
 	padding: 1em;
@@ -142,6 +147,52 @@ const Slider = styled.input`
 	accent-color: #f55050;
 	width: 100%;
 	height: 4px;
+`;
+
+// Adding links bar
+const LinkContainer = styled.div`
+	display: flex;
+	padding: 20px;
+	flex-direction: row;
+	justify-content: space-around;
+`;
+const LinkBar = styled.div`
+	background-color: ${background};
+	width: 100%;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	font-size: 1em;
+	font-family: ${primary_font};
+`;
+const LinkAdd = styled.button`
+	font-family: ${secondary_font};
+	color: ${primary_white};
+	background-color: ${primary_red};
+	border-radius: 0;
+	font-weight: 300;
+
+	font-size: 2em;
+	text-align: center;
+
+	border: none;
+	width: 5em;
+	height: 2em;
+`;
+const LinkInput = styled.input`
+	width: 100%;
+	height: 80%;
+	padding-left: 20px;
+	background: transparent;
+	font-size: 2rem;
+	letter-spacing: 1px;
+	color: ${primary_white};
+	border: none;
+	&:focus {
+		outline: none;
+	}
 `;
 
 const Watchpage = () => {
@@ -187,6 +238,16 @@ const Watchpage = () => {
 						</SliderContainer>
 						<h3>1:23:22</h3>
 					</Timeline>
+					<LinkContainer>
+						<LinkBar>
+							<LinkInput
+								type="text"
+								id="lname"
+								name="lname"
+							></LinkInput>
+							<LinkAdd>ADD</LinkAdd>
+						</LinkBar>
+					</LinkContainer>
 				</PlayerContainer>
 
 				<QueueContainer>
