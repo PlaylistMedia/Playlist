@@ -5,8 +5,8 @@ const primary_red = "#ca2525";
 const primary_white = "#ffffff";
 const background = "#020202";
 const foreground = "#151515";
-const primary_font = "Ubuntu, sans-serif";
-const secondary_font = "Ubuntu Condensed, sans-serif";
+const primary_font = "'Ubuntu', sans-serif";
+const secondary_font = "'Ubuntu Condensed', sans-serif";
 const logo_font = "Unica One";
 
 const fontsize = {
@@ -54,12 +54,11 @@ const Button = styled.button`
 	font-weight: 300;
 
 	font-size: ${(props) =>
-		props.normal ? fontsize.H2FONTSIZE : fontsize.H1FONTSIZE};
+		props.small ? fontsize.H2FONTSIZE : fontsize.H1FONTSIZE};
 
 	border: none;
 	width: 5em;
 	height: 2em;
-	margin: 0.5rem;
 
 	span {
 		color: ${primary_red};
