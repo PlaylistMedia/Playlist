@@ -1,4 +1,10 @@
+import { Link } from "react-router-dom";
 import { Logo, Button, CenteredDiv } from "../Common/Common";
+import styled from "styled-components";
+
+const ListItem = styled.li`
+	margin: 20px;
+`;
 
 const Homepage = () => {
 	return (
@@ -7,21 +13,23 @@ const Homepage = () => {
 				P<span>LA</span>YLISt
 			</Logo>
 			<CenteredDiv>
-				<li>
-					<Button large>
-						H<span>OS</span>T
-					</Button>
-				</li>
-				<li>
-					<Button large>
+				<ListItem>
+					<Link to="/watch">
+						<Button size="large">
+							H<span>OS</span>T
+						</Button>
+					</Link>
+				</ListItem>
+				<ListItem>
+					<Button size="large">
 						SIG<span>NU</span>P
 					</Button>
-				</li>
-				<li>
-					<Button large>
+				</ListItem>
+				<ListItem>
+					<Button size="large">
 						J<span>OI</span>N
 					</Button>
-				</li>
+				</ListItem>
 			</CenteredDiv>
 		</div>
 	);

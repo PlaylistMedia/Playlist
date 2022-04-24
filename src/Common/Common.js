@@ -53,8 +53,10 @@ const Button = styled.button`
 	border-radius: 0;
 	font-weight: 300;
 
-	font-size: ${(props) =>
-		props.small ? fontsize.H2FONTSIZE : fontsize.H1FONTSIZE};
+	font-size: ${({ size }) =>
+		(size === "small" && fontsize.H2FONTSIZE) ||
+		(size === "large" && fontsize.H1FONTSIZE) ||
+		(size === "tiny" && fontsize.H3FONTSIZE)};
 
 	border: none;
 	width: 5em;
