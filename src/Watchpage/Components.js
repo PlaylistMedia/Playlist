@@ -21,13 +21,22 @@ export const BarRight = styled.div`
 	align-items: center;
 	.username {
 		color: ${primary_white};
-		font-family: ${primary_font};
-		margin-right: 20px;
+		font-family: ${secondary_font};
+		@media screen and (max-width: 1024px) {
+			margin-right: 1ch;
+			font-size: 3ch;
+		}
+		font-size: 4ch;
+		margin-right: 2ch;
 	}
 	.profile_picture {
 		border-radius: 50%;
 		object-fit: cover;
+		@media screen and (max-width: 1024px) {
+			width: 2em;
+		}
 		width: 4em;
+
 		height: fit-content;
 	}
 `;
@@ -37,14 +46,18 @@ export const BarLeft = styled.div`
 	align-items: center;
 	justify-content: flex-start;
 	.invite-button {
-		margin-left: 20px;
+		margin-left: 2ch;
 	}
 `;
 
 // Parent component for everything except the top bar
 export const Content = styled.div`
 	display: flex;
-	flex-direction: row;
+	@media screen and (max-width: 1024px) {
+		flex-direction: column;
+		align-items: center;
+		margin-top: 2ch;
+	}
 	justify-content: space-between;
 
 	height: 100%;
@@ -55,37 +68,49 @@ export const Content = styled.div`
 export const QueueContainer = styled.div`
 	display: flex list-item;
 	align-self: flex-start;
+
 	align-items: center;
 	background-color: ${foreground};
 	padding: 0em 1em 1em 1em;
 	scroll-behavior: smooth;
+	margin-left: 2ch;
 
 	font-family: ${secondary_font};
 	color: ${primary_white};
+
 	font-size: x-large;
 
-	width: auto;
-	max-height: calc(100vh - 5vh);
+	width: calc(100% - 80%);
+	max-height: calc(100vh - 4vh);
 
 	overflow-y: scroll;
 	list-style: none;
+
+	@media screen and (max-width: 1024px) {
+		align-self: auto;
+		margin-top: 2ch;
+		width: calc(100% - 25%);
+		margin-left: 0px;
+	}
 `;
 export const QueueItem = styled.div`
 	background-color: ${background};
 
 	color: ${primary_white};
 	font-family: ${secondary_font};
-	width: 12em;
+
+	min-width: 2em;
+
 	height: 2em;
 
 	object-fit: cover;
-	aspect-ratio: 1/1;
-	font-size: 28px;
+
+	font-size: 3ch;
 
 	display: flex;
 	align-items: center;
 	padding: 2rem;
-	margin-bottom: 10px;
+	margin-bottom: 1ch;
 
 	overflow: hidden;
 	overflow-wrap: break-word;
@@ -93,6 +118,9 @@ export const QueueItem = styled.div`
 	.thumbnail {
 		margin-right: 1em;
 		height: 3em;
+		width: 3em;
+		aspect-ratio: 1/1;
+		object-fit: cover;
 	}
 `;
 
@@ -100,7 +128,11 @@ export const QueueItem = styled.div`
 export const PlayerContainer = styled.div`
 	position: relative;
 	width: calc(100% - 25%);
-	height: auto;
+	height: calc(100% - 75%);
+
+	@media screen and (max-width: 1024px) {
+		width: calc(100% - 23%);
+	}
 
 	display: flex;
 	flex-direction: column;
@@ -110,7 +142,7 @@ export const PlayerContainer = styled.div`
 `;
 export const VideoPlayer = styled.div`
 	width: 100%;
-	margin-bottom: 1em;
+
 	.video {
 		height: 100%;
 		width: 100%;
@@ -123,20 +155,24 @@ export const Timeline = styled.div`
 	align-items: center;
 	justify-content: space-evenly;
 	width: 100%;
+	font-family: ${primary_font};
+	font-size: 2ch;
+	margin-bottom: 1ch;
+	margin-top: 2ch;
 	h3 {
-		margin: 20px;
+		margin: 2ch;
 		color: ${primary_white};
 		font-size: 1em;
 	}
 	Button {
-		margin-left: 20px;
+		margin-left: 2ch;
 	}
 `;
 // Slider for the video player
 export const SliderContainer = styled.div`
 	width: 100%;
-	margin-left: 20px;
-	margin-right: 20px;
+	margin-left: 2ch;
+	margin-right: 2ch;
 	flex-direction: row;
 	justify-content: space-around;
 `;
@@ -149,8 +185,7 @@ export const Slider = styled.input`
 // Adding links bar
 export const LinkContainer = styled.div`
 	display: flex;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 2ch;
 	flex-direction: row;
 	justify-content: space-around;
 `;

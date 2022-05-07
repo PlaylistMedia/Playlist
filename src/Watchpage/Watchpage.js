@@ -109,11 +109,12 @@ class Watchpage extends React.Component {
 			<PageWrapper>
 				<TopBar>
 					<BarLeft>
-						<Link to="/">
-							<Logo>
+						<Logo>
+							<Link to="/" className="link">
 								P<span>LA</span>YLISt
-							</Logo>
-						</Link>
+							</Link>
+						</Logo>
+
 						<Button size="small" className="invite-button">
 							I<span>NV</span>ITE
 						</Button>
@@ -155,7 +156,6 @@ class Watchpage extends React.Component {
 								onProgress={this.handleProgress}
 								onDuration={this.handleDuration}
 							/>
-							)
 						</VideoPlayer>
 						<Timeline>
 							<Icon>
@@ -215,6 +215,78 @@ class Watchpage extends React.Component {
 					<QueueContainer>
 						<h1>queue:</h1>
 						<li>
+							<QueueItem>
+								<img
+									src="https://townsquare.media/site/442/files/2018/01/breaking-bad-hank-death-pic.jpg"
+									alt="Girl in a jacket"
+									className="thumbnail"
+								/>
+								Walter White Dies.
+							</QueueItem>
+							<QueueItem>
+								<img
+									src="https://townsquare.media/site/442/files/2018/01/breaking-bad-hank-death-pic.jpg"
+									alt="Girl in a jacket"
+									className="thumbnail"
+								/>
+								Walter White Dies.
+							</QueueItem>
+							<QueueItem>
+								<img
+									src="https://townsquare.media/site/442/files/2018/01/breaking-bad-hank-death-pic.jpg"
+									alt="Girl in a jacket"
+									className="thumbnail"
+								/>
+								Walter White Dies.
+							</QueueItem>
+							<QueueItem>
+								<img
+									src="https://townsquare.media/site/442/files/2018/01/breaking-bad-hank-death-pic.jpg"
+									alt="Girl in a jacket"
+									className="thumbnail"
+								/>
+								Walter White Dies.
+							</QueueItem>
+							<QueueItem>
+								<img
+									src="https://townsquare.media/site/442/files/2018/01/breaking-bad-hank-death-pic.jpg"
+									alt="Girl in a jacket"
+									className="thumbnail"
+								/>
+								Walter White Dies.
+							</QueueItem>
+							<QueueItem>
+								<img
+									src="https://townsquare.media/site/442/files/2018/01/breaking-bad-hank-death-pic.jpg"
+									alt="Girl in a jacket"
+									className="thumbnail"
+								/>
+								Walter White Dies.
+							</QueueItem>
+							<QueueItem>
+								<img
+									src="https://townsquare.media/site/442/files/2018/01/breaking-bad-hank-death-pic.jpg"
+									alt="Girl in a jacket"
+									className="thumbnail"
+								/>
+								Walter White Dies.
+							</QueueItem>
+							<QueueItem>
+								<img
+									src="https://townsquare.media/site/442/files/2018/01/breaking-bad-hank-death-pic.jpg"
+									alt="Girl in a jacket"
+									className="thumbnail"
+								/>
+								Walter White Dies.
+							</QueueItem>
+							<QueueItem>
+								<img
+									src="https://townsquare.media/site/442/files/2018/01/breaking-bad-hank-death-pic.jpg"
+									alt="Girl in a jacket"
+									className="thumbnail"
+								/>
+								Walter White Dies.
+							</QueueItem>
 							<QueueItem>
 								<img
 									src="https://townsquare.media/site/442/files/2018/01/breaking-bad-hank-death-pic.jpg"

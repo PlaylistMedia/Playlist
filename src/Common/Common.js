@@ -27,11 +27,18 @@ const Logo = styled.h1`
 
 	font-size: ${(props) =>
 		props.title ? fontsize.TITLE : fontsize.H1FONTSIZE};
+	@media screen and (max-width: 1024px) {
+		font-size: 6ch;
+	}
 	span {
 		color: ${primary_red};
 		font-size: inherit;
 		font-family: ${logo_font};
 		display: inline-block;
+	}
+	.link {
+		text-decoration: none;
+		color: ${primary_white};
 	}
 `;
 
@@ -57,6 +64,10 @@ const Button = styled.button`
 		(size === "small" && fontsize.H2FONTSIZE) ||
 		(size === "large" && fontsize.H1FONTSIZE) ||
 		(size === "tiny" && fontsize.H3FONTSIZE)};
+
+	@media screen and (max-width: 1024px) {
+		font-size: 3ch;
+	}
 
 	border: none;
 	width: 5em;
