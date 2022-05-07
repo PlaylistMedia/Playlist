@@ -1,0 +1,17 @@
+.Modal {
+	position: absolute;
+	top: 10ch;
+	left: 70ch;
+	right: 70ch;
+	bottom: 20ch;
+	background-color: rgba(2, 2, 2, 1);
+}
+
+.Overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(21, 21, 21, 0.8);
+}
