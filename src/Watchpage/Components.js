@@ -22,9 +22,9 @@ export const BarRight = styled.div`
 	.username {
 		color: ${primary_white};
 		font-family: ${secondary_font};
-		@media screen and (max-width: 1024px) {
+		@media screen and (max-width: 1366px) {
 			margin-right: 1ch;
-			font-size: 3ch;
+			font-size: 2ch;
 		}
 		font-size: 4ch;
 		margin-right: 2ch;
@@ -32,7 +32,7 @@ export const BarRight = styled.div`
 	.profile_picture {
 		border-radius: 50%;
 		object-fit: cover;
-		@media screen and (max-width: 1024px) {
+		@media screen and (max-width: 1366px) {
 			width: 2em;
 		}
 		width: 4em;
@@ -53,12 +53,12 @@ export const BarLeft = styled.div`
 // Parent component for everything except the top bar
 export const Content = styled.div`
 	display: flex;
-	@media screen and (max-width: 1024px) {
+	@media screen and (max-width: 1366px) {
 		flex-direction: column;
 		align-items: center;
 		margin-top: 2ch;
 	}
-	justify-content: space-between;
+	justify-content: space-around;
 
 	height: 100%;
 	width: 100%;
@@ -78,7 +78,7 @@ export const QueueContainer = styled.div`
 	font-family: ${secondary_font};
 	color: ${primary_white};
 
-	font-size: x-large;
+	font-size: 3.5ch;
 
 	width: calc(100% - 80%);
 	max-height: calc(100vh - 4vh);
@@ -86,10 +86,11 @@ export const QueueContainer = styled.div`
 	overflow-y: scroll;
 	list-style: none;
 
-	@media screen and (max-width: 1024px) {
+	@media screen and (max-width: 1366px) {
 		align-self: auto;
 		margin-top: 2ch;
 		width: calc(100% - 25%);
+		font-size: 2.5ch;
 		margin-left: 0px;
 	}
 `;
@@ -130,7 +131,7 @@ export const PlayerContainer = styled.div`
 	width: calc(100% - 25%);
 	height: calc(100% - 75%);
 
-	@media screen and (max-width: 1024px) {
+	@media screen and (max-width: 1366px) {
 		width: calc(100% - 23%);
 	}
 
@@ -179,7 +180,7 @@ export const SliderContainer = styled.div`
 export const Slider = styled.input`
 	accent-color: #f55050;
 	width: 100%;
-	height: 4px;
+	height: 1px;
 `;
 
 // Adding links bar
@@ -208,6 +209,9 @@ export const LinkAdd = styled.button`
 	font-weight: 300;
 
 	font-size: 2em;
+	@media screen and (max-width: 1366px) {
+		font-size: 1em;
+	}
 	text-align: center;
 
 	border: none;
@@ -217,9 +221,12 @@ export const LinkAdd = styled.button`
 export const LinkInput = styled.input`
 	width: 100%;
 	height: 80%;
-	padding-left: 20px;
+	padding-left: 2ch;
 	background: transparent;
-	font-size: 2rem;
+	font-size: 2em;
+	@media screen and (max-width: 1366px) {
+		font-size: 1em;
+	}
 	letter-spacing: 1px;
 	color: ${primary_white};
 	border: none;
@@ -230,6 +237,6 @@ export const LinkInput = styled.input`
 
 // Icon container
 export const Icon = styled.div`
-	margin-left: 20px;
+	margin-left: 2ch;
 	display: flex;
 `;

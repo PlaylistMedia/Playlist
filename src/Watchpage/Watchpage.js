@@ -106,6 +106,19 @@ class Watchpage extends React.Component {
 		this.setState({ duration });
 	};
 
+	validURL(str) {
+		var pattern = new RegExp(
+			"^(https?:\\/\\/)?" + // protocol
+				"((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+				"((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+				"(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+				"(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+				"(\\#[-a-z\\d_]*)?$",
+			"i",
+		); // fragment locator
+		return !!pattern.test(str);
+	}
+
 	ref = (player) => {
 		this.player = player;
 	};
@@ -226,14 +239,22 @@ class Watchpage extends React.Component {
 									}}
 								></LinkInput>
 								<LinkAdd
-									onClick={() =>
-										this.setState({
-											data: [
-												...this.state.data,
-												this.urlInput.value,
-											],
-										})
-									}
+									onClick={() => {
+										if (this.urlInput.value.length > 0) {
+											if (
+												this.validURL(
+													this.urlInput.value,
+												)
+											) {
+												this.setState({
+													data: [
+														...this.state.data,
+														this.urlInput.value,
+													],
+												});
+											}
+										}
+									}}
 								>
 									ADD
 								</LinkAdd>
