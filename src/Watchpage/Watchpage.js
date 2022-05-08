@@ -64,12 +64,8 @@ class Watchpage extends React.Component {
 		playbackRate: 1.0,
 		loop: false,
 		index: 0,
+		data: [],
 	};
-	data = [
-		"https://youtu.be/dQw4w9WgXcQ",
-		"https://youtu.be/sAKVhAk5ezU",
-		"https://youtu.be/q-vZYpNkd00",
-	];
 
 	load = (url) => {
 		this.setState({
@@ -199,7 +195,7 @@ class Watchpage extends React.Component {
 									color="white"
 									onClick={async () => {
 										await this.setState({
-											url: this.data.shift(),
+											url: this.state.data.shift(),
 										});
 									}}
 								/>
@@ -231,7 +227,12 @@ class Watchpage extends React.Component {
 								></LinkInput>
 								<LinkAdd
 									onClick={() =>
-										this.data.push(this.urlInput)
+										this.setState({
+											data: [
+												...this.state.data,
+												this.urlInput.value,
+											],
+										})
 									}
 								>
 									ADD
@@ -242,7 +243,7 @@ class Watchpage extends React.Component {
 
 					<QueueContainer>
 						<h1>queue:</h1>
-						<Queue links={this.data} />
+						<Queue links={this.state.data} />
 					</QueueContainer>
 				</Content>
 			</PageWrapper>
