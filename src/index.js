@@ -10,7 +10,7 @@ root.render(
 	<BrowserRouter>
 		<Routes>
 			<Route path="/" element={<Homepage />} />
-			<Route path="watch" element={<Watchpage />} />
+			<Route path="watch/:id" element={<Watchpage />} />
 		</Routes>
 	</BrowserRouter>,
 );

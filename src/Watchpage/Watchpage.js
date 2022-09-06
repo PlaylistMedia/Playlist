@@ -1,6 +1,6 @@
 import { Button, Logo } from "../Common/Common";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import React from "react";
 import ReactPlayer from "react-player";
 import { Duration } from "./Duration";
@@ -24,6 +24,7 @@ import {
 	QueueItem,
 } from "./Components";
 import PlayPNG from "./Play.png";
+import "../Homepage/Modal.scss";
 
 // Root component
 const PageWrapper = styled.div`
@@ -32,39 +33,75 @@ const PageWrapper = styled.div`
 	flex-direction: column;
 `;
 
-const Queue = (props) => {
-	const links = props.links;
-	const queue = links.map((links) => {
+const Watching = (props) => {
+	const watching = props.watching;
+	const watchers = watching.map((watching) => {
 		return (
-			<QueueItem>
-				<img
-					src={PlayPNG}
-					alt="No thumbnail found."
-					className="thumbnail"
-				/>
-				{`${links.toString().substring(0, 25)}...`}
-			</QueueItem>
+			<img
+				src="https://i.pinimg.com/736x/20/ea/28/20ea2869f5bd0b48d31864bfeba1d54d.jpg"
+				alt="walter white"
+				className="profile_picture"
+			/>
 		);
 	});
-	return queue;
+	return watchers;
 };
 
 class Watchpage extends React.Component {
-	state = {
-		url: "",
-		pip: false,
-		playing: false,
-		controls: false,
-		light: false,
-		volume: 0.8,
-		muted: false,
-		played: 0,
-		loaded: 0,
-		duration: 0,
-		playbackRate: 1.0,
-		loop: false,
-		index: 0,
-		data: [],
+	constructor(props) {
+		super(props);
+		this.state = {
+			roomID: this.props.params.id,
+			url: "",
+			pip: false,
+			playing: false,
+			controls: false,
+			light: false,
+			volume: 0.8,
+			muted: false,
+			played: 0,
+			loaded: 0,
+			duration: 0,
+			playbackRate: 1.0,
+			loop: false,
+			index: 0,
+			watching: ["currentuser"],
+			data: [],
+		};
+	}
+
+	removeItemFromArray = (arr, value) => {
+		var index = arr.indexOf(value);
+		if (index > -1) {
+			arr.splice(index, 1);
+		}
+		return arr;
+	};
+
+	Queue = (props) => {
+		const links = props.links;
+		const queue = links.map((links) => {
+			return (
+				<QueueItem>
+					<img
+						onClick={async () => {
+							await this.setState({
+								url: links.toString(),
+							});
+							this.removeItemFromArray(
+								this.state.data,
+								links.toString(),
+							);
+						}}
+						src={PlayPNG}
+						alt="No thumbnail found."
+						className="thumbnail"
+					/>
+					<text>{`${links.toString().substring(0, 18)}...`}</text>
+				</QueueItem>
+			);
+		});
+		return queue;
 	};
 
 	load = (url) => {
@@ -147,17 +184,23 @@ class Watchpage extends React.Component {
 							</Link>
 						</Logo>
 
-						<Button size="small" className="invite-button">
+						<Button
+							size="small"
+							className="invite-button"
+							onClick={() => {
+								navigator.clipboard.writeText(
+									`${this.state.roomID}`,
+								);
+								alert(
+									"The invite has been copied to your clipboard.",
+								);
+							}}
+						>
 							I<span>NV</span>ITE
 						</Button>
 					</BarLeft>
 					<BarRight>
-						<h1 className="username">Hello, Jesse!</h1>
-						<img
-							src="https://i.pinimg.com/736x/20/ea/28/20ea2869f5bd0b48d31864bfeba1d54d.jpg"
-							alt="Girl in a jacket"
-							className="profile_picture"
-						/>
+						<Watching watching={this.state.watching} />
 					</BarRight>
 				</TopBar>
 
@@ -264,7 +307,9 @@ class Watchpage extends React.Component {
 
 					<QueueContainer>
 						<h1>queue:</h1>
-						<Queue links={this.state.data} />
+						{/* Moved it to the class so 
+						that I could add the click to play functionality */}
+						<this.Queue links={this.state.data} />
 					</QueueContainer>
 				</Content>
 			</PageWrapper>
@@ -272,4 +317,7 @@ class Watchpage extends React.Component {
 	}
 }
 
-export default Watchpage;
+function withParams(Component) {
+	return (props) => <Component {...props} params={useParams()} />;
+}
+export default withParams(Watchpage);

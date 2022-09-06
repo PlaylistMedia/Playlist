@@ -35,7 +35,8 @@ export const BarRight = styled.div`
 		@media screen and (max-width: 1366px) {
 			width: 2em;
 		}
-		width: 4em;
+		width: 3em;
+		margin-left: 2ch;
 
 		height: fit-content;
 	}
@@ -80,8 +81,8 @@ export const QueueContainer = styled.div`
 
 	font-size: 3.5ch;
 
-	width: calc(100% - 80%);
-	max-height: calc(100vh - 4vh);
+	width: calc(100% - 75%);
+	max-height: calc(100vh - 14vh);
 
 	overflow-y: scroll;
 	list-style: none;
@@ -106,7 +107,7 @@ export const QueueItem = styled.div`
 
 	object-fit: cover;
 
-	font-size: 3ch;
+	font-size: 2ch;
 
 	display: flex;
 	align-items: center;
@@ -116,8 +117,8 @@ export const QueueItem = styled.div`
 	overflow: hidden;
 	overflow-wrap: break-word;
 
-	.thumbnail {
-		margin-right: 1em;
+	img {
+		margin-right: 1ch;
 		height: 3em;
 		width: 3em;
 		aspect-ratio: 1/1;
@@ -129,7 +130,7 @@ export const QueueItem = styled.div`
 export const PlayerContainer = styled.div`
 	position: relative;
 	width: calc(100% - 25%);
-	height: calc(100% - 75%);
+	height: calc(100vh - 14vh);
 
 	@media screen and (max-width: 1366px) {
 		width: calc(100% - 23%);
@@ -174,13 +175,12 @@ export const SliderContainer = styled.div`
 	width: 100%;
 	margin-left: 2ch;
 	margin-right: 2ch;
-	flex-direction: row;
 	justify-content: space-around;
 `;
 export const Slider = styled.input`
 	accent-color: #f55050;
 	width: 100%;
-	height: 1px;
+	height: 8px;
 `;
 
 // Adding links bar
@@ -205,8 +205,17 @@ export const LinkAdd = styled.button`
 	font-family: ${secondary_font};
 	color: ${primary_white};
 	background-color: ${primary_red};
+
 	border-radius: 0;
+
 	font-weight: 300;
+
+	:active {
+		background-color: ${primary_red};
+		-moz-box-shadow: inset 0 0 10px #0b0b0b;
+		-webkit-box-shadow: inset 0 0 10px #0b0b0b;
+		box-shadow: inset 0 0 10px #0b0b0b;
+	}
 
 	font-size: 2em;
 	@media screen and (max-width: 1366px) {

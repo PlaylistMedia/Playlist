@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
 	Logo,
 	Button,
@@ -11,17 +11,18 @@ import {
 import styled from "styled-components";
 import ReactModal from "react-modal";
 import React, { useState } from "react";
+import { Peer } from "peerjs";
 import "./Modal.scss";
 
 const ListItem = styled.li`
 	margin: 2ch;
 `;
 
-const ModalContentContainer = styled.div`
+export const ModalContentContainer = styled.div`
 	padding: 2ch;
 `;
 
-const TitleModal = styled.h1`
+export const TitleModal = styled.h1`
 	font-family: ${primary_font};
 	font-size: 8ch;
 
@@ -34,10 +35,10 @@ const InputBox = styled.div`
 	flex-direction: column;
 	padding-left: 2ch;
 	padding-right: 2ch;
-
 	margin-bottom: 2ch;
+
 	h1 {
-		font-size: 5ch;
+		font-size: 3ch;
 		font-family: ${primary_font};
 		color: ${primary_white};
 	}
@@ -59,6 +60,7 @@ const TextInput = styled.input`
 const Homepage = () => {
 	const [loginModalState, toggleLoginModal] = useState();
 	const [signupModalState, toggleSignupModal] = useState();
+	let navigate = useNavigate();
 	ReactModal.defaultStyles.overlay.backgroundColor = "rgba(1.0,1.0,1.0,0.8)";
 
 	return (
@@ -68,11 +70,18 @@ const Homepage = () => {
 			</Logo>
 			<CenteredDiv>
 				<ListItem>
-					<Link to="/watch">
-						<Button size="large">
-							H<span>OS</span>T
-						</Button>
-					</Link>
+					<Button
+						size="large"
+						onClick={() => {
+							let peer = new Peer();
+
+							peer.on("open", (id) => {
+								navigate(`/watch/${id}`);
+							});
+						}}
+					>
+						H<span>OS</span>T
+					</Button>
 				</ListItem>
 				<ListItem>
 					<div>
@@ -88,32 +97,8 @@ const Homepage = () => {
 						>
 							<ModalContentContainer>
 								<TitleModal>
-									Si<span>gn</span>up
+									Signup is currently disabled.
 								</TitleModal>
-
-								<InputBox>
-									<h1>Username</h1>
-									<TextInput
-										type="text"
-										placeholder="Enter your Username"
-									></TextInput>
-								</InputBox>
-
-								<InputBox>
-									<h1>Password</h1>
-									<TextInput
-										type="text"
-										placeholder="Enter your Password"
-									></TextInput>
-								</InputBox>
-
-								<InputBox>
-									<h1>Email</h1>
-									<TextInput
-										type="text"
-										placeholder="Enter your Email"
-									></TextInput>
-								</InputBox>
 							</ModalContentContainer>
 						</ReactModal>
 					</div>
@@ -132,23 +117,17 @@ const Homepage = () => {
 							overlayClassName="Overlay"
 						>
 							<ModalContentContainer>
-								<TitleModal>
-									Lo<span>gi</span>n
-								</TitleModal>
-
 								<InputBox>
-									<h1>Username</h1>
+									<h1>Room ID</h1>
+
 									<TextInput
 										type="text"
-										placeholder="Enter your Username"
-									></TextInput>
-								</InputBox>
-
-								<InputBox>
-									<h1>Password</h1>
-									<TextInput
-										type="text"
-										placeholder="Enter your Password"
+										placeholder="ID of the other room"
+										onKeyDown={(event) => {
+											if (event.key === "Enter") {
+												// TODO
+											}
+										}}
 									></TextInput>
 								</InputBox>
 							</ModalContentContainer>
